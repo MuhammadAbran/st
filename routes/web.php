@@ -12,5 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+Route::post('/', 'userController@admin');
+
+// // Route::get('customer', 'CustomerController@customer');
+// Route::get('customer', 'CustomerController@customer_join');
+// Route::get('{id}/edit', 'CustomerController@edit')->name('customer.edit');
+// Route::post('update/{id}', 'CustomerController@update')->name('customer.update');
+// Route::delete('delete/{id}', 'CustomerController@destroy')->name('customer.delete');
+// Route::post('store', ['as' => 'customer.store', 'uses' => 'CustomerController@store']);
+
+
+
+Route::resource('customers', 'ResourceController');
+Route::get('/cus', 'ResourceController@index');
+Route::post('/customerses/{id}', ['as' => 'cus.ah', 'uses' => 'ResourceController@update']);
