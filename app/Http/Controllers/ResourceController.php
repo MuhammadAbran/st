@@ -8,13 +8,19 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class ResourceController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+      // dd(Customer::all());
       $data['customers'] = Customer::join('address', 'customer.address_id', '=', 'address.address_id')
       ->orderBy('customer_id', 'desc')->paginate(10);
       // dd($data);

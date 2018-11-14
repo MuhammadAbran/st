@@ -29,3 +29,7 @@ Route::post('/', 'userController@admin');
 Route::resource('customers', 'ResourceController');
 Route::get('/cus', 'ResourceController@index');
 Route::post('/customerses/{id}', ['as' => 'cus.ah', 'uses' => 'ResourceController@update']);
+
+Auth::routes();
+
+Route::get('/home', 'ResourceController@index')->name('home');
